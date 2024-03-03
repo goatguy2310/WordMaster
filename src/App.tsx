@@ -2,8 +2,13 @@ import WordGrid from "./components/WordGrid";
 import "./App.css";
 import send from "./assets/send.png";
 import erase from "./assets/erase.png";
-import words from "./assets/words_dictionary.json";
 import { useState } from "react";
+
+import word0 from "./assets/words_alpha_0.json";
+import word1 from "./assets/words_alpha_1.json";
+import word2 from "./assets/words_alpha_2.json";
+import word3 from "./assets/words_alpha_3.json";
+import word4 from "./assets/words_alpha_4.json";
 
 function getRandomInt(max: number) {
 	return Math.floor(Math.random() * max);
@@ -23,6 +28,8 @@ const App = () => {
 		jx: 10,
 		qz: 15,
 	};
+
+	const words = Object.assign(word0, word1, word2, word3, word4);
 
 	const [board, setBoard] = useState(b);
 	const [text, setText] = useState("");
