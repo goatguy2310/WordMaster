@@ -4,8 +4,7 @@ import send from "./assets/send.png";
 import erase from "./assets/erase.png";
 import { useState } from "react";
 
-import word0 from "./assets/words_alpha_0.json";
-import word1 from "./assets/words_alpha_1.json";
+import word from "./assets/words_alpha_0.json";
 
 function getRandomInt(max: number) {
 	return Math.floor(Math.random() * max);
@@ -25,8 +24,6 @@ const App = () => {
 		jx: 10,
 		qz: 15,
 	};
-
-	const words = Object.assign(word0, word1);
 
 	const [board, setBoard] = useState(b);
 	const [text, setText] = useState("");
