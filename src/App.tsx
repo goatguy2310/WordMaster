@@ -4,7 +4,7 @@ import send from "./assets/send.png";
 import erase from "./assets/erase.png";
 import { useState } from "react";
 
-import word from "./assets/words_alpha_0.json";
+import words from "./assets/words_alpha_0.json";
 
 function getRandomInt(max: number) {
 	return Math.floor(Math.random() * max);
