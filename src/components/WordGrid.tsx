@@ -2,7 +2,7 @@ interface Props {
 	board: string[];
 	handleGridClick: (index: number) => void;
 }
-
+// test
 const WordGrid = ({ board, handleGridClick }: Props) => {
 	return (
 		<div className="board">
