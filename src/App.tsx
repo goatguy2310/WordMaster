@@ -2,7 +2,7 @@ import WordGrid from "./components/WordGrid";
 import "./App.css";
 import send from "./assets/send.png";
 import erase from "./assets/erase.png";
-import words from "./assets/words_small.json";
+import words from "./assets/words_dictionary.json";
 import { useState } from "react";
 
 function getRandomInt(max: number) {
