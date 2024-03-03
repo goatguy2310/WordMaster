@@ -2,9 +2,7 @@ import WordGrid from "./components/WordGrid";
 import "./App.css";
 import send from "./assets/send.png";
 import erase from "./assets/erase.png";
-import { useState } from "react";
-
-import words from "./assets/words_alpha_0.json";
+import { useState, useEffect } from "react";
 
 function getRandomInt(max: number) {
 	return Math.floor(Math.random() * max);
@@ -24,6 +22,13 @@ const App = () => {
 		jx: 10,
 		qz: 15,
 	};
+
+	const [words, setWords] = useState({});
+	useEffect(() => {
+		fetch("./words_dictionary.json")
+			.then((res) => res.json())
+			.then((data) => setWords(data));
+	}, []);
 
 	const [board, setBoard] = useState(b);
 	const [text, setText] = useState("");
