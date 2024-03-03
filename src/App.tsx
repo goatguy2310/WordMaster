@@ -70,7 +70,7 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<h1>Word Master</h1>
+			<h1>Word Amogus</h1>
 			<WordGrid
 				board={board}
 				handleGridClick={handleGridClick}
