@@ -10,8 +10,6 @@ function getRandomInt(max: number) {
 }
 
 const App = () => {
-	const bgAudio = new Audio(bgMusic);
-	bgAudio.loop = true;
 	let b = [];
 	for (let i = 0; i < 96; i++) {
 		b.push(String.fromCharCode(65 + getRandomInt(26)));
@@ -37,7 +35,15 @@ const App = () => {
 	const [text, setText] = useState("");
 	const [pos, setPos] = useState<number[]>([]);
 
+	const [hist, setHist] = useState("");
+
 	const [score, setScore] = useState(0);
+	const [time, setTime] = useState(30);
+
+	// const [gameStarted, setGameStarted] = useState(false);
+
+	const bgAudio = new Audio(bgMusic);
+	bgAudio.loop = true;
 
 	const handleGridClick = (index: number) => {
 		if (board[index] === "") return;
@@ -73,36 +79,54 @@ const App = () => {
 					}
 				}
 			}
+			setHist(hist + (hist == "" ? "History: " : " | ") + text);
 			setScore(score + wordScore);
+			setTime(30);
 		}
 		// bgAudio.play();
 	};
 
+	useEffect(() => {
+		if (time === 0) {
+			return;
+		}
+
+		const t = setTimeout(() => {
+			setTime(time - 1);
+		}, 1000);
+		return () => clearTimeout(t);
+	}, [time]);
+
 	return (
 		<div className="App">
-			<h1>Word Amogus</h1>
+			<h1>Word Master</h1>
 			<WordGrid
 				board={board}
 				handleGridClick={handleGridClick}
 			></WordGrid>
 
-			<div className="Info">Score: {score}</div>
+			<div className="histText">{hist}</div>
+
+			<div className="Info">
+				Score: {score} - Time: {time === 0 ? "GAME OVER" : time + "s"}
+			</div>
 
 			<div className="InputBox">
 				<button
 					className="btn btn-primary"
 					style={{
-						width: "8vh",
-						height: "6vh",
+						width: "7vh",
+						height: "5.5vh",
 						backgroundImage: `url(${send})`,
 						backgroundRepeat: "no-repeat",
 						backgroundPosition: "center",
 						backgroundSize: "35%",
 					}}
 					onClick={handleSubmitClick}
+					disabled={time == 0}
 				></button>
 				<input
-					style={{ width: "33.5vh", height: "6vh" }}
+					style={{ width: "30vh", height: "6vh" }}
 					type="text"
 					value={text}
 					disabled
@@ -110,8 +134,8 @@ const App = () => {
 				<button
 					className="btn btn-primary"
 					style={{
-						width: "8vh",
-						height: "6vh",
+						width: "7vh",
+						height: "5.5vh",
 						backgroundImage: `url(${erase})`,
 						backgroundRepeat: "no-repeat",
 						backgroundPosition: "center",

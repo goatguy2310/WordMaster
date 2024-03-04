@@ -22,8 +22,8 @@
 }
 
 .square {
-    height: 6vh;
-    width: 6vh;
+    height: 5.5vh;
+    width: 5.5vh;
     border: 0.4vh solid #00a6ff;
     border-radius: 10%;
     display: flex;
@@ -34,6 +34,16 @@
     font-size: 3.5vh;
 }
 
+.histText {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 18vh;
+    font-size: 2vh;
+    width: 60vh;
+    /* height: 10vh; */
+}
+
 .InputBox {
     display: flex;
     position: absolute;
@@ -42,7 +52,7 @@
     align-items: center;
     justify-content: center;
     gap: 1vh;
-    margin-bottom: 2vh;
+    margin-bottom: 3vh;
 }
 
 .Info {
@@ -51,7 +61,7 @@
     bottom: 0;
     flex-direction: column;
     gap: 1vh;
-    margin-bottom: 8.5vh;
+    margin-bottom: 10vh;
 }
 
 input[type="text"]:disabled {
