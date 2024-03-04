@@ -2,6 +2,7 @@ import WordGrid from "./components/WordGrid";
 import "./App.css";
 import send from "./assets/send.png";
 import erase from "./assets/erase.png";
+import bgMusic from "./assets/music.mp3";
 import { useState, useEffect } from "react";
 
 function getRandomInt(max: number) {
@@ -9,6 +10,8 @@ function getRandomInt(max: number) {
 }
 
 const App = () => {
+	const bgAudio = new Audio(bgMusic);
+	bgAudio.loop = true;
 	let b = [];
 	for (let i = 0; i < 96; i++) {
 		b.push(String.fromCharCode(65 + getRandomInt(26)));
@@ -58,7 +61,7 @@ const App = () => {
 	};
 
 	const handleSubmitClick = () => {
-		if (text.toLowerCase() in words) {
+		if (text.toLowerCase() in words && text.length >= 2) {
 			setText("");
 
 			let wordScore = 1;
@@ -72,6 +75,7 @@ const App = () => {
 			}
 			setScore(score + wordScore);
 		}
+		// bgAudio.play();
 	};
 
 	return (
